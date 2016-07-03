@@ -1,0 +1,22 @@
+package homework1;
+
+public class IntToRoman1 {
+	
+	static String[] thousand = {"", "M", "MM", "MMM" }; 
+ 	
+	static String[] hundred =  {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
+   
+	static String[] ten=   {  "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"}; 
+    
+	static String[] single = new String[] {  "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" }; 
+    
+    	public static void main(String[] args) {
+		 int num;
+		 num = 3999;
+		 
+    		System.out.print(thousand[num/1000]);
+    		System.out.print(hundred[num % 1000 / 100]);
+    		System.out.print(ten[num % 100 / 10]);
+    		System.out.print(single[num % 10]);
+	}
+}
