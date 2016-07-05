@@ -1,0 +1,63 @@
+package homework1;
+ 
+import java.util.*;
+
+public class IPAddress{
+	
+	public static void main (String [] args){
+		IPAddress ip = new IPAddress();
+		String s = "255255113";
+		ArrayList<String> result = ip.ConvertIPAddress(s);
+		
+		for (int i=0; i<result.size(); i++) {
+			System.out.println(result.get(i));
+		}	
+		
+	}
+	
+	public ArrayList<String> ConvertIPAddress(String s) {
+		
+	
+		ArrayList<String> result = new ArrayList<String>();  
+	 
+		final int n = s.length();
+		if ((n < 4) || (n > 12))
+			return result;
+		
+		for (int i=1; i<4; i++) {
+			for (int j=1; j< 4; j++){
+				for (int k=1; k<4; k++){
+					for (int h=1; h<4; h++){
+						if ((i+j+k+h) <= n && i+j+k+h == s.length()){
+							String s1=s.substring(0,i);
+							String s2=s.substring(i,i+j);
+							String s3=s.substring(i+j,i+j+k);
+							String s4=s.substring(i+j+k,i+j+k+h);
+							if (isValid(s1) && isValid(s2) && isValid(s3) &&isValid(s4)){
+								result.add(s1 + "." + s2 + "." + s3 + "." + s4);
+							}
+						}
+					}
+				}
+			}
+		}
+		return result;
+	}
+	
+	public static boolean isValid (String s) {
+		int n = Integer.parseInt(s);
+		
+		if ((s.charAt(0) == '0') && (s.length() > 1)) {
+			return false;
+		}
+		if (n >=0 && n <= 255) {
+			return true;
+		} else { 
+			return false;
+		}
+	}
+}
+
+
+		
+		
